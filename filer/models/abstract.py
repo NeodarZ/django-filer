@@ -168,6 +168,16 @@ class BaseImage(File):
         return self._generate_thumbnails(required_thumbnails)
 
     @property
+    def icons_images(self):
+        required_thumbnails = dict(
+            (size, {'size': (int(size), int(size)),
+                    'crop': True,
+                    'upscale': True,
+                    'subject_location': self.subject_location})
+            for size in filer_settings.FILER_ADMIN_ICON_IMAGES_SIZES)
+        return self._generate_thumbnails(required_thumbnails).get(filer_settings.FILER_ADMIN_ICON_IMAGES_SIZES[0])
+
+    @property
     def thumbnails(self):
         return self._generate_thumbnails(BaseImage.DEFAULT_THUMBNAILS)
 
