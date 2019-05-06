@@ -21,7 +21,7 @@ class Command(BaseCommand):
                 self.stdout.write(u'Processing image {0} / {1} {2}'.format(idx + 1, total, image))
                 self.stdout.flush()
                 image.thumbnails
-                image.icons
+                image.icons_images
             except IOError as e:
                 self.stderr.write('Failed to generate thumbnails: {0}'.format(str(e)))
                 self.stderr.flush()
